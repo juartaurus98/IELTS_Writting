@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IELTS Writing Assistant</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>IELTS Writing Assistant</h1>
+      <div style="display:flex; gap:8px; align-items:center;">
+        <button id="btn-health">Kiểm tra kết nối</button>
+        <button id="btn-generate" class="primary">Thực hiện thi</button>
+      </div>
+    </header>
+
+    <section class="prompt-section">
+      <h2>Đề bài</h2>
+      <div id="prompt-error" class="small" style="color:#ef4444"></div>
+      <div class="card" style="margin-bottom:10px; display:flex; gap:12px; align-items:center; flex-wrap:wrap">
+        <label style="display:flex; align-items:center; gap:6px">
+          <input type="radio" name="prompt-mode" id="mode-auto" checked>
+          <span>Sinh đề tự động</span>
+        </label>
+        <label style="display:flex; align-items:center; gap:6px">
+          <input type="radio" name="prompt-mode" id="mode-manual">
+          <span>Nhập đề thủ công</span>
+        </label>
+        <span class="small" style="opacity:.8">Khi chọn "Nhập đề thủ công", hệ thống sẽ chấm theo đúng 2 đề bạn nhập.</span>
+      </div>
+      <div id="manual-prompts" class="criteria" style="display:none">
+        <div class="card">
+          <h3>Nhập đề Task 1</h3>
+          <textarea id="customPrompt1" rows="4" placeholder="Nhập đề Task 1 (Academic)"></textarea>
+        </div>
+        <div class="card">
+          <h3>Nhập đề Task 2</h3>
+          <textarea id="customPrompt2" rows="4" placeholder="Nhập đề Task 2"></textarea>
+        </div>
+      </div>
+      <div class="criteria">
+        <div class="card">
+          <h3>Task 1</h3>
+          <pre id="prompt1" class="prompt-box">Ấn "Thực hiện thi" để sinh đề.</pre>
+          <div id="chart-data-container" style="display:none; margin-top:12px; padding-top:12px; border-top:1px solid #e5e7eb;">
+            <h4 style="margin:0 0 8px 0; font-size:14px; color:#6b7280;">Biểu đồ:</h4>
+            <img id="chart-image" style="width:100%; max-width:800px; height:auto; border:1px solid #e5e7eb; border-radius:4px; display:none; margin:0 auto;" alt="Chart">
+            <div id="chart-data-fallback" style="display:none;">
+              <h5 style="margin:8px 0 4px 0; font-size:12px; color:#6b7280;">Dữ liệu biểu đồ/bảng:</h5>
+              <pre id="chart-data" class="prompt-box" style="max-height:300px; overflow-y:auto; font-size:12px; background:#f9fafb;"></pre>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Task 2</h3>
+          <pre id="prompt2" class="prompt-box">Ấn "Thực hiện thi" để sinh đề.</pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="editor-section">
+      <h2>Bài viết của bạn</h2>
+      <div class="criteria">
+        <div class="card">
+          <h3>Task 1 (≥150 từ)</h3>
+          <textarea id="essay1" rows="10" placeholder="Viết bài Task 1..."></textarea>
+        </div>
+        <div class="card">
+          <h3>Task 2 (≥250 từ)</h3>
+          <textarea id="essay2" rows="10" placeholder="Viết bài Task 2..."></textarea>
+        </div>
+      </div>
+      <button id="btn-submit-batch" class="accent" style="margin-top:10px">Gửi chấm cả 2 Task</button>
+    </section>
+
+    <section class="result-section">
+      <h2>Kết quả chấm</h2>
+      <div class="criteria">
+        <div class="card">
+          <h3>Kết quả Task 1</h3>
+          <div id="result1" class="result-box"></div>
+        </div>
+        <div class="card">
+          <h3>Kết quả Task 2</h3>
+          <div id="result2" class="result-box"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

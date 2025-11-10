@@ -1,0 +1,20 @@
+:root { --bg: #0f172a; --card: #111827; --text: #e5e7eb; --muted:#94a3b8; --primary:#22c55e; --accent:#60a5fa; --danger:#ef4444; }
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--text); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
+.container { max-width: 980px; margin: 0 auto; padding: 24px; }
+header { display:flex; align-items:center; justify-content: space-between; gap:16px; margin-bottom: 16px; }
+h1 { font-size: 22px; margin:0; }
+button { cursor:pointer; border:1px solid transparent; border-radius: 8px; padding: 10px 14px; color:var(--text); background: #1f2937; transition: .15s; }
+button.primary { background: var(--primary); color:#0a0a0a; font-weight:600; }
+button.accent { background: var(--accent); color:#0a0a0a; font-weight:600; }
+button:hover { filter: brightness(1.08); }
+.prompt-section, .editor-section, .result-section { margin-top: 16px; }
+.prompt-box, .result-box { background: var(--card); border:1px solid #334155; border-radius: 10px; padding: 14px; white-space: pre-wrap; min-height: 80px; }
+textarea { width: 100%; background: var(--card); color: var(--text); border:1px solid #334155; border-radius: 10px; padding: 12px; resize: vertical; line-height:1.6; }
+h2 { margin: 12px 0; font-size: 18px; }
+#result .band { font-size: 32px; font-weight: 700; margin-bottom: 8px; }
+.criteria { display:grid; grid-template-columns: 1fr; gap: 10px; margin-top: 10px; }
+.card { background:#0b1220; border:1px solid #23314f; border-radius: 10px; padding: 10px; }
+.card h3 { margin: 0 0 6px; font-size: 14px; color: var(--muted); }
+.small { color: var(--muted); font-size: 14px; }
+.loading { opacity:.7; filter: blur(.2px); }
